@@ -1,0 +1,270 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tech Writing Challenge",
+    "description": "Visualization of the use of the different endpoints of the application such as Login, Create user, view user information, update user information and transfer.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://8j5baasof2.execute-api.us-west-2.amazonaws.com/production",
+      "description": "Production link"
+    }
+  ],
+  "paths": {
+    "/users/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Log into the site",
+        "operationId": "login",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "chosen username",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/User/properties/username"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "chosen user passowrd",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/User/properties/username"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully authenticated and returned token"
+          },
+          "500": {
+            "description": "Unauthorized access"
+          }
+        }
+      }
+    },
+    "/users/{username}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get current user",
+        "description": "returns the current user information",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "$ref": "#/components/schemas/User/properties/username"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current user information",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "example": "<html><body><h1>User Information</h1><p>username: John Doe</p><p>passowrd: password</p></body></html>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/update": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Change password",
+        "description": "Update user's password",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "new_password",
+            "in": "query",
+            "description": "Id ofthe task will be edited",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/User/properties/password"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update an existent task in the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/users/transfer": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "transfer bitcoins to other user",
+        "operationId": "transfer",
+        "parameters": [
+          {
+            "name": "to",
+            "in": "query",
+            "description": "User that will receive the transfer",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/Transfer/properties/to"
+            }
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "description": "amount that will be transfer",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/Transfer/properties/amount"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transfer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction completed"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/users/new": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create a new user",
+        "description": "Generate a new user with his username and password",
+        "operationId": "createUser",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "username that will be use to login",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/User/properties/username"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "password that will be use to login",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/User/properties/password"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "chosen name or handle that a user selects to identify themselves on the platform"
+          },
+          "password": {
+            "type": "string",
+            "description": "confidential and secure string of characters chosen by the user to authenticate their identity"
+          }
+        }
+      },
+      "Transfer": {
+        "type": "object",
+        "properties": {
+          "to": {
+            "type": "string",
+            "description": "User to which the transfer will be made"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount that will be transfer"
+          }
+        }
+      }
+    }
+  }
+}
