@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/tech-write-challenge/static/css/main.11bae58a.css",
+    "main.js": "/tech-write-challenge/static/js/main.bcc1c5d9.js",
+    "static/js/787.3dcf60f6.chunk.js": "/tech-write-challenge/static/js/787.3dcf60f6.chunk.js",
+    "static/media/api.png": "/tech-write-challenge/static/media/api.3b1f22a2427ec70c0742.png",
+    "index.html": "/tech-write-challenge/index.html",
+    "main.11bae58a.css.map": "/tech-write-challenge/static/css/main.11bae58a.css.map",
+    "main.bcc1c5d9.js.map": "/tech-write-challenge/static/js/main.bcc1c5d9.js.map",
+    "787.3dcf60f6.chunk.js.map": "/tech-write-challenge/static/js/787.3dcf60f6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.11bae58a.css",
+    "static/js/main.bcc1c5d9.js"
+  ]
+}
