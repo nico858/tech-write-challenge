@@ -50,8 +50,7 @@ const categories = [
       { id: 'Suport', icon: <ContactSupportIcon /> },
       { id: 'Contact us', icon: <HelpCenterIcon /> },
     ],
-  },
-  
+  },  
 ];
 
 const item = {

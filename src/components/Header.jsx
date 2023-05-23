@@ -53,6 +53,23 @@ export default function Header(props: HeaderProps) {
               </Link>
             </Grid>
             <Grid item>
+              <Link
+                href="/challenge"
+                variant="body2"
+                sx={{
+                  textDecoration: 'none',
+                  color: lightColor,
+                  '&:hover': {
+                    color: 'common.white',
+                  },
+                }}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Challenge
+              </Link>
+            </Grid>
+            <Grid item>
               <Tooltip title="Alerts • No alerts">
                 <IconButton color="inherit">
                   <NotificationsIcon />
