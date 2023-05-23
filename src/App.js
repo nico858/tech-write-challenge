@@ -8,7 +8,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PaperBase />} />
+        <Route path="/tech-write-challenge" element={<PaperBase />} />
         <Route path="/docs" element={<SwaggerDocumentation />} />
         <Route path="/challenge" element={<Challenge />} />
       </Routes>
